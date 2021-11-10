@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet" />
+      <title>Image Compression with SVD</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   </head>
+   <body>
+      <h1>Upload your photo!</h1>
+      <!-- source : https://bashooka.com/coding/css-javascript-file-upload-examples/ -->
+      <div class="container">
+         <form method="POST" action="" enctype="multipart/form-data">
+            <div class="file-upload-wrapper" data-text="Select your file!">
+               <input name="file" type="file" class="file-upload-field" value="" />
+            </div>
+            <p><input type="submit" class="submit" value="Submit" /></p>
+         </form>
+      </div>
+      <!-- endsource -->
+      {% if file !='' %}
+      <div class="row">
+         <div class="column">
+            <div class="centered">
+               <img src="{{ url_for('upload', filename=file) }}" />
+               <p>Before</p>
+            </div>
+         </div>
+         <div class="column">
+            <div class="centered">
+               <img src="{{ url_for('upload', filename=out) }}" />
+               <p>After</p>
+            </div>
+         </div>
+      </div>
+      <a class="download" href="{{ url_for('upload', filename=out) }}" , download="{{out}}">DOWNLOAD</a>
+      {% endif%}
+   </body>
+   <script src="{{ url_for('static', filename = 'js/script.js')}}"></script>
+</html>
