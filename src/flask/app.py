@@ -46,21 +46,27 @@ def igen(matrix):
     step= 1
 
     while cond:
-        x = np.matmul(a,x)
+        vec = np.matmul(a,vec)
 
-        lambdanew= max(abs(x))
+        val= max(abs(vec))
 
-        x = x/lambdanew
+        vec = vec/val
 
         step = step + 1
         if step > maxsteps:
             break
         # Calculating error
-        error = abs(lambdanew - lambda_old)
-        lambda_old = lambdanew
+        error = abs(val - lambda_old)
+        lambda_old = val
         condition = error > toleransi
     
-    return lambdanew, x
+    return val, vec
+
+def normalize(x):
+    fac = abs(x).max()
+    x_n = x / x.max()
+    return fac, x_n
+
 
 def compressImage(file):
     imge = Image.open(os.path.join(app.config['UPLOAD_PATH'], file))
