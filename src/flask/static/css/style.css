@@ -106,3 +106,32 @@ img {
    max-width: 75%;
    max-height: 100%;
 }
+.time {
+   padding: 20px;
+}
+::-webkit-scrollbar {
+   width: 10px;
+}
+
+::-webkit-scrollbar-track {
+   background: #2a5298;
+}
+
+::-webkit-scrollbar-thumb {
+   background: #184ba8;
+}
+
+::-webkit-scrollbar-thumb:hover {
+   background: #123c8a;
+}
+
+input[type="number"] {
+   -moz-appearance: textfield;
+   color: black;
+   width: 40px;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}

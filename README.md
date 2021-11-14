@@ -1,9 +1,9 @@
 # Algeo02-20032
 
-| Nama            | NIM      |
-| --------------- | -------- |
-| Fadil Fauzani   | 13520032 |
-| Gibran Darmawan | 13520061 |
+| Nama            | NIM      |      Pembagian      |
+| --------------- | -------- | :-----------------: |
+| Fadil Fauzani   | 13520032 | Backend dan Laporan |
+| Gibran Darmawan | 13520061 |   SVD dan Laporan   |
 
 ## Deskripsi Program
 
@@ -20,3 +20,9 @@ clone repository ini, lalu buka cmd pada folder repository-nya. jalankan command
 lalu untuk menjalankan appnya jalankan command
 
 `flask run`
+
+namun sebelum menjalankan aplikasi webnya harus install python terlebih dahulu download [disini](https://www.python.org/downloads/) (jangan lupa masukin ke system path)
+
+lalu install library flask dengan cara jalankan command
+
+`pip install Flask`

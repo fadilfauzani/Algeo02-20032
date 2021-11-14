@@ -16,6 +16,7 @@
             <div class="file-upload-wrapper" data-text="Select your file!">
                <input name="file" type="file" class="file-upload-field" value="" />
             </div>
+            <p>K = <input type="number" min="1" max="100" name="n-K" />% * dari min(M, N)</p>
             <p><input type="submit" class="submit" value="Submit" /></p>
          </form>
       </div>
@@ -35,6 +36,7 @@
             </div>
          </div>
       </div>
+      <div class="time">Algorithm takes {{ ("%.2f" % time) }} seconds</div>
       <a class="download" href="{{ url_for('upload', filename=out) }}" , download="{{out}}">DOWNLOAD</a>
       {% endif%}
    </body>
