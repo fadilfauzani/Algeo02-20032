@@ -34,33 +34,30 @@ def upload(filename):
 # fungsi cari igen value 
 
 def igen(matrix):
-    x = np.zeros((len(matrix)))
-    for i in range(len(matrix)):
-        x[i] = 1
+    M, N = matrix.shape
+    val = np.random.rand(M, N)
+    val, rd = np.linalg.qr(val)
+    val_ = val
     a = np.array(matrix)
-    toleransi = 0.001
-    maxsteps = 10
-
-    lambda_old = 1.0
-    cond = True
-    step= 1
-
+    toleransi = 1e-5
+    error = 1
+    cond =True
+    step = 0
+    maxsteps = 500
     while cond:
-        vec = np.matmul(a,vec)
-
-        val= max(abs(vec))
-
-        vec = vec/val
-
-        step = step + 1
-        if step > maxsteps:
+        val = matrix.dot(val)
+        val, vec = np.linalg.qr(val)
+        delta = val - val_
+        deltaabs = delta ** 2
+        error = deltaabs.sum()
+        val_ = val
+        step += 1
+        if step > maxsteps and error < toleransi:
             break
-        # Calculating error
-        error = abs(val - lambda_old)
-        lambda_old = val
-        condition = error > toleransi
     
-    return val, vec
+    return val, np.diag(vec)
+
+
 
 def normalize(x):
     fac = abs(x).max()
@@ -116,3 +113,4 @@ def compressImage(file):
     compressed_image = Image.fromarray(compressed_image)
     compressed_image.save(os.path.join(app.config['UPLOAD_PATH'], ("compressed_"+file)))
     return "compressed_"+file
+
