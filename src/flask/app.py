@@ -74,7 +74,7 @@ def compressImage(file, c):
         img = np.asarray(imge).astype(float)
         N = min(img.shape)
         k = (c * N) // 100
-        u, s, v = svd(img)
+        u, s, v = np.linalg.svd(img)
         rimg = np.dot(u[:,:k],np.dot(np.diag(s[:k]),v[:k,:]))
     else:
         imge = imge.convert("RGB")
@@ -86,12 +86,12 @@ def compressImage(file, c):
         k = (c * N) // 100
         print("start")
         #dah diganti
-        ur,sr,vr = svd(r)
-        print("red selsai")
-        ug,sg,vg = svd(g)
-        print("green selesai")
-        ub,sb,vb = svd(b) 
-        print("blue selsai")
+        ur,sr,vr = np.linalg.svd(r)
+        # print("red selsai")
+        ug,sg,vg = np.linalg.svd(g)
+        # print("green selesai")
+        ub,sb,vb = np.linalg.svd(b) 
+        # print("blue selsai")
         rr = np.dot(ur[:,:k],np.dot(np.diag(sr[:k]), vr[:k,:])) 
         rg = np.dot(ug[:,:k],np.dot(np.diag(sg[:k]), vg[:k,:]))
         rb = np.dot(ub[:,:k],np.dot(np.diag(sb[:k]), vb[:k,:]))
